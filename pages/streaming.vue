@@ -37,7 +37,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import HlsPlayer from '@/components/HLSPlayer.vue'
 
-const hlsUrl = ref('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')
+const hlsUrl = ref('http://localhost:8080/418193a6-2fb8-5179-9a47-5908365f70b5/outputlist.m3u8')
 const searchUrl = ref('')
 
 const changeStream = () => {

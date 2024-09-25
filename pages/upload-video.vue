@@ -1,7 +1,7 @@
 <template>
   <div class="upload-container">
     <UCard>
-      <UForm @submit="handleSubmit">
+      <UForm @submit.prevent="handleSubmit">
         <UForm-item label="Title">
           <UInput v-model="form.title" placeholder="Enter the title" required />
         </UForm-item>
@@ -11,7 +11,8 @@
         </UForm-item>
 
         <UForm-item label="File">
-          <UInput type="file" v-model="form.media" accept="*/*" required />
+          <!-- Usamos ref para acceder directamente al archivo -->
+          <input type="file" ref="fileInput" @change="handleFileChange" required />
         </UForm-item>
 
         <UButton type="primary" html-type="submit">Upload</UButton>
@@ -21,31 +22,48 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       form: {
         title: '',
         creator: '',
-        media: null
+        media: null // Aquí se almacenará el archivo seleccionado
       }
     };
   },
   methods: {
-    handleSubmit() {
-      const formData = new FormData();
-      formData.append('title', this.form.title);
-      formData.append('creator', this.form.creator);
-      formData.append('media', this.form.media);
+    handleFileChange(event) {
+      const file = event.target.files[0];
+      this.form.media = file; // Guardamos el archivo seleccionado en form.media
+    },
+    async handleSubmit() {
+      // Si el archivo no está seleccionado, mostramos una alerta
+      if (!this.form.media) {
+        alert("Please select a file to upload.");
+        return;
+      }
 
-      // Aquí envías el formData a tu backend
-      fetch('http://localhost:8080/api/upload', {
-        method: 'POST',
-        body: formData
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+      try {
+        // Crear un nuevo FormData y añadir los datos
+        const formData = new FormData();
+        formData.append('title', this.form.title);
+        formData.append('creator', this.form.creator);
+        formData.append('media', this.form.media); // Añadimos el archivo
+
+        // Usar axios para enviar el formulario
+        const response = await axios.post('http://localhost:8080/api/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+
+        console.log('File uploaded successfully:', response.data);
+      } catch (error) {
+        console.error('Error uploading the file:', error.response?.data || error.message);
+      }
     }
   }
 };
