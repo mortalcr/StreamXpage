@@ -1,30 +1,27 @@
 <template>
   <UContainer>
-    <!-- Barra de búsqueda -->
     <UInput 
       v-model="searchUrl" 
-      placeholder="Ingresa la URL del stream HLS"
+      placeholder="Ingresa el nombre del video"
       clearable
       size="lg"
       class="mb-4"
     />
-    <Ubutton 
-      @click="changeStream" 
+    <UButton 
+      @click="searchMedia" 
       size="lg"
       class="mb-4" 
       block
     >
-      Cargar Stream
-    </Ubutton>
+      Buscar
+    </UButton>
 
-    <!-- Reproductor centrado -->
     <div class="flex justify-center">
       <div class="w-4/5 max-w-lg">
         <hls-player :streamUrl="hlsUrl" />
       </div>
     </div>
 
-    <!-- Botones de navegación -->
     <div class="flex justify-between mt-6">
       <UButton @click="goHome">Ir al inicio</UButton>
       <UButton @click="uploadVideo" color="primary">Subir video</UButton>
@@ -35,18 +32,15 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import HlsPlayer from '@/components/HLSPlayer.vue'
 
-const hlsUrl = ref('http://localhost:8080/418193a6-2fb8-5179-9a47-5908365f70b5/outputlist.m3u8')
 const searchUrl = ref('')
+const router = useRouter()
 
-const changeStream = () => {
+const searchMedia = () => {
   if (searchUrl.value) {
-    hlsUrl.value = searchUrl.value
+    router.push({ path: '/search-results', query: { q: searchUrl.value } })
   }
 }
-
-const router = useRouter()
 
 const goHome = () => {
   router.push('/')

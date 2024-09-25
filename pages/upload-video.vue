@@ -11,7 +11,6 @@
         </UForm-item>
 
         <UForm-item label="File">
-          <!-- Usamos ref para acceder directamente al archivo -->
           <input type="file" ref="fileInput" @change="handleFileChange" required />
         </UForm-item>
 
@@ -30,30 +29,27 @@ export default {
       form: {
         title: '',
         creator: '',
-        media: null // Aquí se almacenará el archivo seleccionado
+        media: null
       }
     };
   },
   methods: {
     handleFileChange(event) {
       const file = event.target.files[0];
-      this.form.media = file; // Guardamos el archivo seleccionado en form.media
+      this.form.media = file;
     },
     async handleSubmit() {
-      // Si el archivo no está seleccionado, mostramos una alerta
       if (!this.form.media) {
         alert("Please select a file to upload.");
         return;
       }
 
       try {
-        // Crear un nuevo FormData y añadir los datos
         const formData = new FormData();
         formData.append('title', this.form.title);
         formData.append('creator', this.form.creator);
-        formData.append('media', this.form.media); // Añadimos el archivo
+        formData.append('media', this.form.media);
 
-        // Usar axios para enviar el formulario
         const response = await axios.post('http://localhost:8080/api/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
