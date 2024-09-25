@@ -1,13 +1,6 @@
 <template>
-  <div>
-    <UButton to="/streaming">Hola</UButton>
-  </div>
+  hola
 </template>
 
-<script lang="ts" setup>
-
+<script>
 </script>
-
-<style>
-
-</style>
