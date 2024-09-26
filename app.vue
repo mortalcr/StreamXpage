@@ -13,6 +13,11 @@
             <UButton color="secondary" size="lg" class="navbar-button">Subir Video</UButton>
           </NuxtLink>
         </li>
+        <li>
+          <NuxtLink to="/search">
+            <UButton color="secondary" size="lg" class="navbar-button">Buscar</UButton>
+          </NuxtLink>
+        </li>
       </ul>
     </nav>
 
