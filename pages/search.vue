@@ -8,7 +8,6 @@
       size="lg"
       class="aUInput"
       color="orange"
-      fontcolor
     />
     <UButton 
       @click="searchFiles" 
@@ -96,7 +95,8 @@ watch(() => route.query.q, (newQuery) => {
   color: #ffffff;
 }
 .aUInput {
-  background-color: #ffffff;
+  background-color: #bdb5b5;
   margin-bottom: 4px;
+  color: black;
 }
 </style>

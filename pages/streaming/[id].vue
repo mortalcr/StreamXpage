@@ -46,7 +46,7 @@ const redirectToSearch = () => {
 
 onMounted(() => {
   const hash = route.params.id
-  hlsUrl.value = `http://localhost:8080/${hash}/outputlist.m3u8`
+  hlsUrl.value = `http://localhost:8080/${hash}/${hash}.m3u8`
 })
 </script>
 
