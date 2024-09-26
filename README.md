@@ -10,7 +10,7 @@ git clone https://github.com/mortalcr/StreamXpage.git
 
 ## About
 
-**StreamX** is a multimedia streaming application designed for seamless video and audio playback. With a clean interface and powerful features, it simplifies the media consumption experience for users. Built with Nuxt 3, StreamX provides quick access to media libraries, smooth streaming performance, and robust customization options.
+**StreamX** is a multimedia streaming application designed for seamless video and audio playback. With a clean interface and powerful features, it simplifies the media consumption experience for users. Built with Nuxt 3, StreamX provides quick access to media libraries, and smooth streaming performance.
 
 ## Features
 
