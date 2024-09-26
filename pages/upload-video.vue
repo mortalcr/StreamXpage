@@ -87,6 +87,8 @@ export default {
 
 .form-item {
   margin-bottom: 1rem;
+  background-color: #f97316;
+  color: black;
 }
 
 input {
