@@ -1,22 +1,25 @@
 <template>
   <div class="upload-container">
-    <UCard>
-      <UForm @submit.prevent="handleSubmit">
-        <UForm-item label="Title">
-          <UInput v-model="form.title" placeholder="Enter the title" required />
-        </UForm-item>
+    <div class="u-card">
+      <form @submit.prevent="handleSubmit">
+        <div class="form-item">
+          <label>Title</label>
+          <input v-model="form.title" placeholder="Enter the title" required />
+        </div>
 
-        <UForm-item label="Creator">
-          <UInput v-model="form.creator" placeholder="Enter creator's name" required />
-        </UForm-item>
+        <div class="form-item">
+          <label>Creator</label>
+          <input v-model="form.creator" placeholder="Enter creator's name" required />
+        </div>
 
-        <UForm-item label="File">
+        <div class="form-item">
+          <label>File</label>
           <input type="file" ref="fileInput" @change="handleFileChange" required />
-        </UForm-item>
+        </div>
 
-        <UButton type="primary" html-type="submit">Upload</UButton>
-      </UForm>
-    </UCard>
+        <button type="submit" class="submit-button">Upload</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -73,13 +76,39 @@ export default {
   height: 90vh;
 }
 
-u-card {
+.u-card {
   width: 400px;
   padding: 20px;
+  background-color: #1e1b29; /* Fondo oscuro */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  color: aliceblue;
 }
 
-u-button {
+.form-item {
+  margin-bottom: 1rem;
+}
+
+input {
   width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #f97316; /* Naranja vivo */
+  color: #ffffff;
+  padding: 10px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  background-color: #fb923c;
 }
 </style>

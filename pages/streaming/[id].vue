@@ -7,11 +7,12 @@
         clearable
         size="lg"
         class="search-bar"
+        color="orange"
       />
       <UButton 
         @click="redirectToSearch" 
         size="lg"
-        color="primary"
+        color="orange"
         class="search-button"
       > 
       <UIcon name="il:search"></UIcon>
@@ -24,10 +25,6 @@
       </div>
     </div>
 
-    <div class="flex justify-between mt-6">
-      <UButton @click="goHome">Ir al inicio</UButton>
-      <UButton @click="uploadVideo" color="primary">Subir video</UButton>
-    </div>
   </UContainer>
 </template>
 
@@ -47,14 +44,6 @@ const redirectToSearch = () => {
   }
 }
 
-const goHome = () => {
-  router.push('/')
-}
-
-const uploadVideo = () => {
-  router.push('/upload-video')
-}
-
 onMounted(() => {
   const hash = route.params.id
   hlsUrl.value = `http://localhost:8080/${hash}/outputlist.m3u8`
@@ -71,6 +60,8 @@ onMounted(() => {
 
 .search-bar {
   flex: 1;
+  background-color: #ffffff90;
+  margin-bottom: 4px;
 }
 
 .search-button {
@@ -79,8 +70,6 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
 }
-
-@import url('https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css');
 
 .flex {
   display: flex;
@@ -93,6 +82,7 @@ onMounted(() => {
 .justify-between {
   justify-content: space-between;
 }
+
 
 .mb-4 {
   margin-bottom: 1rem;

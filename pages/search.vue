@@ -1,17 +1,20 @@
 <template>
-  <UContainer>
+  <UContainer class="aUContainer">
     <!-- Barra de búsqueda -->
     <UInput 
       v-model="searchTerm" 
       placeholder="Buscar archivos..."
       clearable
       size="lg"
-      class="mb-4"
+      class="aUInput"
+      color="orange"
+      fontcolor
     />
     <UButton 
       @click="searchFiles" 
       size="lg"
       class="mb-4" 
+      color="orange"
       block
     >
       Buscar
@@ -21,9 +24,9 @@
     <div v-if="media.length > 0">
       <!-- Mostrar Title y Creator de cada archivo -->
       <div v-for="item in media" :key="item.Hash" class="mb-2">
-        <UCard>
+        <UCard class="aUCard">
           <h3>{{ item.Title }} - {{ item.Creator }}</h3> <!-- Ajustado a la estructura de la API -->
-          <UButton @click="playMedia(item.Hash)">Reproducir</UButton>
+          <UButton color="gray" @click="playMedia(item.Hash)">Reproducir</UButton>
         </UCard>
       </div>
     </div>
@@ -83,5 +86,17 @@ watch(() => route.query.q, (newQuery) => {
 }
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.aUCard {
+  background-color: #fb923c;
+}
+
+.aUContainer {
+  color: #ffffff;
+}
+.aUInput {
+  background-color: #ffffff;
+  margin-bottom: 4px;
 }
 </style>
