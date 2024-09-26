@@ -105,7 +105,8 @@ For more information on deployment, refer to the [Nuxt 3 deployment documentatio
 
 ## Authors
 
-- [@mortalcr](https://www.github.com/mortalcr)
+- Primary Author [@mortalcr](https://www.github.com/mortalcr)
+- Secondary Author [@zSnails](https://www.github.com/zSnails)
   
 ## License
 
